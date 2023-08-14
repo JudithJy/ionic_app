@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-buttons slot="start">
+        <ion-menu-button menu="menu-content">
+        </ion-menu-button>
+      </ion-buttons>
+    </ion-buttons>
+    <ion-title>gallery</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+  <ion-row >
+    <ion-col size="6" *ngFor="let item of gallery">
+        <img src= {{item.src}}>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>

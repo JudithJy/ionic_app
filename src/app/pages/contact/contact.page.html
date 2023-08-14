@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-buttons slot="start">
+        <ion-menu-button menu="menu-content">
+        </ion-menu-button>
+      </ion-buttons>
+    </ion-buttons>
+    <ion-title>contact</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+
+    <h1>Contact Empire Partner Foundation</h1>
+    
+<form [formGroup]="contactForm" (ngSubmit)="submit()"> 
+  <ion-list>
+    <ion-item>
+      <ion-label position ="floating">Name</ion-label>
+      <ion-input formControlName ="contact_name" inputmode="name" type="text" ></ion-input>
+    </ion-item>
+<div *ngFor= "let error of errorMessages.contact_name">
+  <ng-container *ngIf="contact_name.hasError(error.type) && (contact_name.dirty || contact_name.touched)" >
+    <small class= "error-message">{{error.message}}</small>
+  </ng-container>
+</div>
+    <ion-item>
+      <ion-label position ="floating">Email</ion-label>
+      <ion-input formControlName ="email" inputmode="email" type="text" ></ion-input>
+    </ion-item>
+    <div *ngFor= "let error of errorMessages.email">
+      <ng-container *ngIf="email.hasError(error.type) && (email.dirty || email.touched)" >
+        <small class= "error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label position="floating">Phone</ion-label>
+      <ion-input formControlName ="phone"  inputmode="phone" type="text" ></ion-input>
+    </ion-item>
+    <div *ngFor = "let error of errorMessages.phone">
+     <ng-container *ngIf= "phone.hasError(error.type) && (phone.dirty || phone.touched)">
+       <small class = "error-message">{{error.message}}</small>
+     </ng-container>
+    </div>
+    <ion-item>
+      <ion-label position ="floating">Address</ion-label>
+      <ion-input formControlName ="address"  inputmode="address" type="text" ></ion-input>
+    </ion-item>
+    <div *ngFor= "let error of errorMessages.address">
+      <ng-container *ngIf="address.hasError(error.type) && (address.dirty || address.touched)" >
+        <small class= "error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label position ="floating">Subject</ion-label>
+        <ion-textarea formControlName ="contact_subject"  inputmode="contact_subject" placeholder="Enter more information here..."></ion-textarea>
+    </ion-item>
+    <div *ngFor= "let error of errorMessages.contact_subject">
+      <ng-container *ngIf="contact_subject.hasError(error.type) && (contact_subject.dirty || contact_subject.touched)" >
+        <small class= "error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-button (click)="presentToast()" type = "submit" [disabled]="!contactForm.valid" expand ="block" > 
+      Submit
+      <ion-icon slot="end" name="create"></ion-icon>
+    </ion-button>
+  </ion-list>
+</form>
+<br>
+  <p>Ground Floor, 35 Ferguson, Illovo, Sandton<br>
+    +27 11 084 1100<br>
+    </p>
+    <p>info@empirepartnerfoundation.org</p>
+  </ion-card>
+</ion-content>

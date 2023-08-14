@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-buttons slot="start">
+        <ion-menu-button menu="menu-content">
+        </ion-menu-button>
+      </ion-buttons>
+    </ion-buttons>
+    <ion-title>Partner with Us</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h3>Partner with Us</h3>
+  <form [formGroup]="partnerForm" (ngSubmit)="submit()"> 
+    <ion-list>
+      <ion-item>
+        <ion-label position ="floating">Name</ion-label>
+        <ion-input formControlName ="partner_name" inputmode="partner_name" type="text" ></ion-input>
+      </ion-item>
+  <div *ngFor= "let error of errorMessages.partner_name">
+    <ng-container *ngIf="partner_name.hasError(error.type) && (partner_name.dirty || partner_name.touched)" >
+      <small class= "error-message">{{error.message}}</small>
+    </ng-container>
+  </div>
+      <ion-item>
+        <ion-label position ="floating">Company Name</ion-label>
+        <ion-input formControlName ="company_name" type="text" inputmode="company_name"></ion-input>
+      </ion-item>
+      <div *ngFor= "let error of errorMessages.company_name">
+        <ng-container *ngIf="company_name.hasError(error.type) && (company_name.dirty || company_name.touched)" >
+          <small class= "error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+      <ion-item>
+        <ion-label position ="floating">Email</ion-label>
+        <ion-input formControlName ="email" type="text" inputmode="email"></ion-input>
+      </ion-item>
+      <div *ngFor= "let error of errorMessages.email">
+        <ng-container *ngIf="email.hasError(error.type) && (email.dirty || email.touched)" >
+          <small class= "error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+      <ion-item>
+        <ion-label position="floating">Phone</ion-label>
+        <ion-input formControlName ="phone"  inputmode="phone" type="text" ></ion-input>
+      </ion-item>
+      <div *ngFor = "let error of errorMessages.phone">
+       <ng-container *ngIf= "phone.hasError(error.type) && (phone.dirty || phone.touched)">
+         <small class = "error-message">{{error.message}}</small>
+       </ng-container>
+      </div>
+      <ion-button (click) = "presentToast()" [disabled]="!partnerForm.valid" type = "submit" expand ="block">
+        Submit
+        <ion-icon slot="end" name="create"></ion-icon>
+      </ion-button>
+    </ion-list>
+  </form>
+</ion-content>

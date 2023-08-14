@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-buttons slot="start">
+        <ion-menu-button menu="menu-content">
+        </ion-menu-button>
+      </ion-buttons>
+    </ion-buttons>
+    <ion-title>Upcoming Events</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let event of listEvents"> 
+    <ion-card-header>
+      <ion-card-title>{{event.event_description}}</ion-card-title>
+      <ion-card-subtitle>From:{{event.event_startdate | date}}To:{{event.event_enddate | date}}</ion-card-subtitle>
+      <ion-card-content>
+       <img src="https://static.wixstatic.com/media/6d0e60_3eb05918428d4587a64352dae750a3ca~mv2.jpg/v1/fill/w_1088,h_620,fp_0.50_0.50,q_85/6d0e60_3eb05918428d4587a64352dae750a3ca~mv2.webp"><img>
+      </ion-card-content>
+    </ion-card-header>
+    
+  </ion-card>
+
+</ion-content>
+

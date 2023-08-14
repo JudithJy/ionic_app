@@ -1,0 +1,170 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-buttons slot="start">
+        <ion-menu-button menu="menu-content">
+        </ion-menu-button>
+      </ion-buttons>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>sponsor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen] = "true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Become a Sponsor</ion-card-title>
+      <ion-card-subtitle>Make a difference by sponsoring our Hackathons</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+     <p>Want to join our efforts but not sure where to start? Sponsor our hackathons 
+      and take advantage of this incredible opportunity to lend your support. 
+      It’s a great way to contribute to our cause, and every little bit counts 
+      towards paving the path for a better tomorrow. Fill out the sponsorship 
+      form (link below) and we'll get in contact with you.
+      </p><br>
+      <p>Register on the form below and become a sponsor</p>
+      <form [formGroup]="sponsorForm" (ngSubmit)="submit()">
+        <ion-item>
+          <ion-label position="floating">What is name?</ion-label>
+          <ion-input formControlName ="sponsor_name" inputmode="sponsor_name"type="text"></ion-input>
+      </ion-item>
+      <div *ngFor= "let error of errorMessages.sponsor_name">
+        <ng-container *ngIf="sponsor_name.hasError(error.type) && (sponsor_name.dirty || sponsor_name.touched)" >
+          <small class= "error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+      <ion-item>
+        <ion-label position="floating">What is surname?</ion-label>
+        <ion-input formControlName ="sponsor_surname" inputmode="sponsor_surname" type="text"></ion-input>
+    </ion-item>
+    <div *ngFor= "let error of errorMessages.sponsor_surname">
+      <ng-container *ngIf="sponsor_surname.hasError(error.type) && (sponsor_surname.dirty || sponsor_surname.touched)" >
+        <small class= "error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+        <ion-list>
+      <ion-radio-group name="auto" value="Phone" formControlName ="prefered_contactmethod" inputmode="prefered_contactmethod">
+        <ion-item>
+          <ion-label>What is your prefered method of contact? </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Phone</ion-label>
+          <ion-radio value="Phone" slot="start"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Email</ion-label>
+          <ion-radio value="Email" slot="start"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+    <div *ngFor= "let error of errorMessages.prefered_contactmethod">
+      <ng-container *ngIf="prefered_contactmethod.hasError(error.type) && (prefered_contactmethod.dirty || prefered_contactmethod.touched)" >
+        <small class= "error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label position="floating">If you'd prefer an email, please provide your email below.</ion-label>
+      <ion-input formControlName ="email" inputmode="email" type="text"></ion-input>
+     </ion-item>
+     <div *ngFor= "let error of errorMessages.email">
+      <ng-container *ngIf="email.hasError(error.type) && (email.dirty || email.touched)" >
+        <small class= "error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label position="floating">If you'd prefer a phone call, please provide us with your phone number.</ion-label>
+      <ion-input formControlName ="phone" inputmode="phone" type="text"></ion-input>
+   </ion-item>
+   <div *ngFor= "let error of errorMessages.phone">
+    <ng-container *ngIf="phone.hasError(error.type) && (phone.dirty || phone.touched)" >
+      <small class= "error-message">{{error.message}}</small>
+    </ng-container>
+  </div>
+  <ion-item>
+    <ion-label>We'd love to know what industry you're in.</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label> Select Industry</ion-label>
+    <ion-select formControlName ="industry" interface="action-sheet" >
+      <ion-select-option *ngFor="let item of selectIndustry" [value]="item.name">{{item.name}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+   <div *ngFor= "let error of errorMessages.industry">
+    <ng-container *ngIf="industry.hasError(error.type) && (industry.dirty || industry.touched)" >
+      <small class= "error-message">{{error.message}}</small>
+    </ng-container>
+  </div>
+    <ion-list>
+      <ion-radio-group name="auto" value="Free Marketing" formControlName ="sponsorship_description" inputmode="sponsorship_description">
+        <ion-item>
+        <ion-label>How can we help you through your sponsorship?</ion-label>
+        </ion-item>
+          <ion-item>
+            <ion-label>Free Marketing</ion-label>
+            <ion-radio value="Free Marketing" slot="start"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Tackling a problem of statement</ion-label>
+            <ion-radio value="Tackling a problem of statement" slot="start"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Find new talent</ion-label>
+            <ion-radio value="Find new talent" slot="start"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Other</ion-label>
+            <ion-radio value="Other" slot="start"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+      <div *ngFor= "let error of errorMessages.sponsorship_description">
+        <ng-container *ngIf="sponsorship_description.hasError(error.type) && (sponsorship_description.dirty || sponsorship_description.touched)" >
+          <small class= "error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+        <ion-list>
+          <ion-radio-group name="auto" value="Social Media" formControlName ="sourceofinformation" inputmode="sourceofinformation" >
+            <ion-item>
+              <ion-label>Lastly tell us how you heard about us?</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Social Media</ion-label>
+              <ion-radio value="Social Media" slot="start"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Referral/Word of mouth</ion-label>
+              <ion-radio value="Referral/Word of mouth" slot="start"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Hackathons</ion-label>
+              <ion-radio value="Hackathons" slot="start"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Search Engine</ion-label>
+              <ion-radio value="Search Engine" slot="start"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Other</ion-label>
+              <ion-radio value="Other" slot="start"></ion-radio>
+            </ion-item>    
+          </ion-radio-group>
+        </ion-list>
+        <div *ngFor= "let error of errorMessages.sourceofinformation">
+          <ng-container *ngIf="sourceofinformation.hasError(error.type) && (sourceofinformation.dirty || sourceofinformation.touched)" >
+            <small class= "error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+        <ion-button (click) ="presentToast()" [disabled]="!sponsorForm.valid" type = "submit" expand ="block">
+          Submit
+          <ion-icon slot="end" name="create"></ion-icon>
+        </ion-button>
+        </form> 
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+

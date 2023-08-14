@@ -1,0 +1,8 @@
+{
+  "name": "EPF",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "ebe717f8"
+}

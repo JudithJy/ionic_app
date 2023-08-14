@@ -1,0 +1,283 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="hackathons"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Hackathon Registration</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-text color="primary">
+    <h1>Register Here</h1>
+  </ion-text>
+  <form [formGroup]="registrationForm" (ngSubmit)="submit()">
+    <ion-item>
+      <ion-label position="floating"> What is your full names?</ion-label>
+      <ion-input formControlName="participant_name" inputmode="participant_name" type="text"></ion-input>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.participant_name">
+      <ng-container
+        *ngIf="participant_name.hasError(error.type) && (participant_name.dirty || participant_name.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label position="floating">What is your ID number?</ion-label>
+      <ion-input inputmode="id_number" formControlName="id_number" type="text"></ion-input>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.id_number">
+      <ng-container *ngIf="id_number.hasError(error.type) && (id_number.dirty || id_number.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label position="floating">What is your email address?</ion-label>
+      <ion-input formControlName="email_address" inputmode="email_address" type="text"></ion-input>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.email_address">
+      <ng-container *ngIf="email_address.hasError(error.type) && (email_address.dirty || email_address.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label position="floating">What is your whatsApp number?</ion-label>
+      <ion-input inputmode="whatsapp_number" formControlName="whatsapp_number" type="text"></ion-input>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.whatsapp_number">
+      <ng-container
+        *ngIf="whatsapp_number.hasError(error.type) && (whatsapp_number.dirty || whatsapp_number.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-list>
+      <ion-radio-group  formControlName="disability" inputmode="disability">
+        <ion-item>
+          <ion-label>Are you disabled?</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Yes</ion-label>
+          <ion-radio value="Yes" slot="start"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>No</ion-label>
+          <ion-radio value="No" slot="start"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+    <div *ngFor="let error of errorMessages.disability">
+      <ng-container *ngIf="disability.hasError(error.type) && (disability.dirty || disability.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label position="floating">If yes Please stipulate</ion-label>
+      <ion-input formControlName="disability_description" inputmode="disability_description" placeholder="Text goes here"></ion-input>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.disability_description">
+      <ng-container
+        *ngIf="disability_description.hasError(error.type) && (disability_description.dirty || disability_description.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-list>
+      <ion-radio-group  formControlName="update_participant" inputmode="update_participant">
+        <ion-item>
+          <ion-label >Would you like to receive news and updates from EPF?</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label position ="">Yes</ion-label>
+          <ion-radio value="Yes" slot="start"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>No</ion-label>
+          <ion-radio value="No" slot="start"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+    <div *ngFor="let error of errorMessages.update_participant">
+      <ng-container
+        *ngIf="update_participant.hasError(error.type) && (update_participant.dirty || update_participant.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-list>
+      <ion-radio-group  formControlName="development_experience" inputmode="development_experience">
+        <ion-item>
+          <ion-label>How many years of development experience do you have?</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Student</ion-label>
+          <ion-radio value="Student" slot="start"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Less than equal to a year</ion-label>
+          <ion-radio value="Less than equal to a year" slot="start"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>2 To 5 years</ion-label>
+          <ion-radio value="2 - 5 Years" slot="start"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>6+ Years</ion-label>
+          <ion-radio value="6+ Years" slot="start"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+    <div *ngFor="let error of errorMessages.development_experience">
+      <ng-container
+        *ngIf="development_experience.hasError(error.type) && (development_experience.dirty || development_experience.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label position="floating">Programming languages you are familiar with?</ion-label>
+      <ion-input formControlName="familiar_language" inputmode="familiar_language" type="text" placeholder="Java,Python,css...etc"></ion-input>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.familiar_language">
+      <ng-container
+        *ngIf="familiar_language.hasError(error.type) && (familiar_language.dirty || familiar_language.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-list>
+      <ion-radio-group  formControlName="programming_experience" inputmode="programming_experience">
+        <ion-item>
+          <ion-label >What areas of data expertise do you have experience in?</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Programming</ion-label>
+          <ion-radio value="Programming" slot="start"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Full Stack</ion-label>
+          <ion-radio value="Full Stack" slot="start"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Back End</ion-label>
+          <ion-radio value="Back End" slot="start"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Front End</ion-label>
+          <ion-radio value="Front End" slot="start"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Graphics</ion-label>
+          <ion-radio value="Graphics" slot="start"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Other</ion-label>
+          <ion-radio value="Other" slot="start"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+    <div *ngFor="let error of errorMessages.programming_experience">
+      <ng-container
+        *ngIf="programming_experience.hasError(error.type) && (programming_experience.dirty || programming_experience.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-list>
+      <ion-radio-group  formControlName="cloudprovider_expertise" inputmode="cloudprovider_expertise">
+        <ion-item>
+          <ion-label >Which cloud providers do you have experience in ?</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Microsoft Asure</ion-label>
+          <ion-radio value="Microsoft Asure" slot="start"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Google Cloud Plartform</ion-label>
+          <ion-radio value="Google Cloud Plartform" slot="start"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>None</ion-label>
+          <ion-radio value="None" slot="start"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Other</ion-label>
+          <ion-radio value="Other" slot="start"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+    <div *ngFor="let error of errorMessages.cloudprovider_expertise">
+      <ng-container
+        *ngIf="cloudprovider_expertise.hasError(error.type) && (cloudprovider_expertise.dirty || cloudprovider_expertise.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-list>
+      <ion-radio-group formControlName="hackathons_participation" inputmode="hackathons_participation">
+        <ion-item>
+          <ion-label>Have you participated in one of our privious hackathons?</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Yes</ion-label>
+          <ion-radio value="Yes" slot="start"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>No</ion-label>
+          <ion-radio value="No" slot="start"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+    <div *ngFor="let error of errorMessages.hackathons_participation">
+      <ng-container
+        *ngIf="hackathons_participation.hasError(error.type) && (hackathons_participation.dirty || hackathons_participation.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label>If yes please state which one/s</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label> Select Hackathon</ion-label>
+      <ion-select formControlName ="which_hackathons" interface="action-sheet" >
+        <ion-select-option *ngFor="let item of hackathons" [value]="item.name">{{item.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.which_hackathons">
+      <ng-container
+        *ngIf="which_hackathons.hasError(error.type) && (which_hackathons.dirty || which_hackathons.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-list>
+      <ion-radio-group  formControlName ="sourceofinformation" inputmode="sourceofinformation" >
+        <ion-item>
+          <ion-label>And finally, would you mind telling us how you heard about the DC Hackathon?</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Social Media</ion-label>
+          <ion-radio value="Social Media" slot="start"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Referral/Word of mouth</ion-label>
+          <ion-radio value="Referral/Word of mouth" slot="start"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Hackathons</ion-label>
+          <ion-radio value="Hackathons" slot="start"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Search Engine</ion-label>
+          <ion-radio value="Search Engine" slot="start"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Other</ion-label>
+          <ion-radio value="Other" slot="start"></ion-radio>
+        </ion-item>    
+      </ion-radio-group>
+    </ion-list>
+    <div *ngFor="let error of errorMessages.sourceofinformation">
+      <ng-container
+        *ngIf="sourceofinformation.hasError(error.type) && (sourceofinformation.dirty || sourceofinformation.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-button (click) = "presentToast()" [disabled]="!registrationForm.valid" type="submit" expand="block">
+      Submit
+      <ion-icon slot="end" name="create"></ion-icon>
+    </ion-button>
+  </form>
+</ion-content>
